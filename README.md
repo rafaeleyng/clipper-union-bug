@@ -1,10 +1,18 @@
 # clipper-union-bug
 Repo for https://github.com/ctessum/go.clipper/issues/16
 
-## execution
+## execution 
 
-Run:
+### c++
 
 ```shell
+cd cpp
+g++ -Wall -std=c++17 -o main main.cpp clipper.cpp
+```
+
+### go
+
+```shell
+cd go
 go run main.go
 ```
