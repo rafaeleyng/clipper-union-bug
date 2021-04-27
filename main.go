@@ -153,6 +153,9 @@ func scaleUp(value float64) clipper.CInt {
 }
 
 func scaleDown(value clipper.CInt) float64 {
+	// Using:
+	//  return float64(value / scaleFactor)
+	// can seem to fix the problem, but it actually just hides it more.
 	return float64(value) / scaleFactor
 }
 
