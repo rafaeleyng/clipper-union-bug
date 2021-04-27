@@ -14,11 +14,11 @@ struct Point {
 struct Polygon {
   vector<Point> vertices;
   friend ostream &operator<<(ostream &out, const Polygon &polygon) {
-    out << "{" << endl;
+    out << "[";
     for (auto &&point : polygon.vertices) {
-      out << "[X: " << point.x << ",Y: " << point.y << "]" << endl;
+      out << "{X:" << point.x << " Y:" << point.y << "} ";
     }
-    out << "}" << endl;
+    out << "]";
     return out;
   };
   Polygon(size_t n) : vertices(n) {}
@@ -147,7 +147,7 @@ int main() {
 
   auto combinedPolys = pathsToPolygons(combinedPaths);
   for (auto &&p : combinedPolys) {
-    cout << p << endl;
+    cout << "[" << p << "]" << endl;
   }
 }
 

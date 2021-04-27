@@ -1,6 +1,8 @@
 package main
 
 import (
+	"fmt"
+
 	clipper "github.com/ctessum/go.clipper"
 	"github.com/pdfcpu/pdfcpu/pkg/api"
 	"github.com/pdfcpu/pdfcpu/pkg/pdfcpu"
@@ -20,9 +22,8 @@ func main() {
 		paths[i] = result[0]
 	}
 
-
 	clip.AddPaths(paths, clipper.PtSubject, true)
-	combinedPaths, ok :=  clip.Execute1(clipper.CtUnion, clipper.PftNonZero, clipper.PftNonZero)
+	combinedPaths, ok := clip.Execute1(clipper.CtUnion, clipper.PftNonZero, clipper.PftNonZero)
 	if !ok {
 		panic("failed to execute")
 	}
@@ -31,8 +32,11 @@ func main() {
 		panic("unexpected multiple paths in combined paths")
 	}
 
+	combinedPolygons := pathsToPolygons(combinedPaths)
+	fmt.Printf("%+v\n", combinedPolygons)
+
 	output(pathsToPolygons(paths), "output-paths.pdf")
-	output(pathsToPolygons(combinedPaths), "output-combinedPaths.pdf")
+	output(combinedPolygons, "output-combinedPaths.pdf")
 }
 
 /*
@@ -101,8 +105,8 @@ func getPolygons() Polygons {
 	conversion between clipper types and my custom types
 */
 type (
-	Point struct { X, Y float64 }
-	Polygon []Point
+	Point    struct{ X, Y float64 }
+	Polygon  []Point
 	Polygons []Polygon
 )
 
@@ -170,7 +174,7 @@ func output(polygons Polygons, outFile string) {
 		pdfcpu.SetStrokeColor(page.Buf, colors[i%len(colors)])
 		for j, curr := range polygon {
 			nextJ := 0
-			if j < len(polygon) - 1 {
+			if j < len(polygon)-1 {
 				nextJ = j + 1
 			}
 			next := polygon[nextJ]
