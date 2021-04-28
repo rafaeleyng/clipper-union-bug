@@ -16,3 +16,10 @@ g++ -Wall -std=c++17 -o main main.cpp clipper.cpp && ./main
 cd go
 go run main.go
 ```
+
+### javascript
+
+```shell
+cd javascript
+node index.js
+```
