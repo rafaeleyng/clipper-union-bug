@@ -2,7 +2,7 @@ const ClipperLib = require('./clipper')
 
 const run = () => {
     const clip = new ClipperLib.Clipper()
-    const combinedNfp = new ClipperLib.Paths()
+    const combinedPaths = new ClipperLib.Paths()
 
     const polygons = getPolygons()
     const paths = polygonsToPaths(polygons)
@@ -10,16 +10,16 @@ const run = () => {
 
     clip.AddPaths(paths, ClipperLib.PolyType.ptSubject, true)
 
-    const ok = clip.Execute(ClipperLib.ClipType.ctUnion, combinedNfp, ClipperLib.PolyFillType.pftNonZero, ClipperLib.PolyFillType.pftNonZero)
+    const ok = clip.Execute(ClipperLib.ClipType.ctUnion, combinedPaths, ClipperLib.PolyFillType.pftNonZero, ClipperLib.PolyFillType.pftNonZero)
     if (!ok) {
         throw new Error('failed to execute')
     }
 
-    if (combinedNfp.length > 1) {
+    if (combinedPaths.length > 1) {
         throw new ERror('unexpected multiple paths in combined paths')
     }
 
-    const combinedPolygons = pathsToPolygons(combinedNfp)
+    const combinedPolygons = pathsToPolygons(combinedPaths)
     console.log(combinedPolygons)
 }
 
