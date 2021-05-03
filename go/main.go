@@ -3,9 +3,9 @@ package main
 import (
 	"fmt"
 
-	clipper "github.com/ctessum/go.clipper"
 	"github.com/pdfcpu/pdfcpu/pkg/api"
 	"github.com/pdfcpu/pdfcpu/pkg/pdfcpu"
+	"github.com/rafaeleyng/clipper-union-bug/clipper"
 )
 
 func main() {
