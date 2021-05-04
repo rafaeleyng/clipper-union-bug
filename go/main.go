@@ -13,14 +13,7 @@ func main() {
 
 	polygons := getPolygons()
 	paths := polygonsToPaths(polygons)
-
-	for i, path := range paths {
-		result := clip.SimplifyPolygon(path, clipper.PftNonZero)
-		if len(result) > 1 {
-			panic("unexpected multiple paths polygon")
-		}
-		paths[i] = result[0]
-	}
+	//paths = clip.SimplifyPolygons(paths, clipper.PftNonZero)
 
 	clip.AddPaths(paths, clipper.PtSubject, true)
 	combinedPaths, ok := clip.Execute1(clipper.CtUnion, clipper.PftNonZero, clipper.PftNonZero)

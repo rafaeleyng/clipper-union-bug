@@ -98,7 +98,7 @@ int main() {
   auto polygons = getPolygons();
   auto paths = polygonsToPaths(polygons);
 
-  ClipperLib::SimplifyPolygons(paths, ClipperLib::pftNonZero);
+//  ClipperLib::SimplifyPolygons(paths, ClipperLib::pftNonZero);
   clip.AddPaths(paths, ClipperLib::ptSubject, true);
 
   ClipperLib::Paths combinedPaths;

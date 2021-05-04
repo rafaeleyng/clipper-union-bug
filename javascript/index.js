@@ -5,8 +5,8 @@ const run = () => {
     const combinedPaths = new ClipperLib.Paths()
 
     const polygons = getPolygons()
-    const paths = polygonsToPaths(polygons)
-        .map(p => ClipperLib.Clipper.SimplifyPolygon(p, ClipperLib.PolyFillType.pftNonZero)[0])
+    let paths = polygonsToPaths(polygons)
+    // paths = ClipperLib.Clipper.SimplifyPolygons(paths, ClipperLib.PolyFillType.pftNonZero)
 
     clip.AddPaths(paths, ClipperLib.PolyType.ptSubject, true)
 
