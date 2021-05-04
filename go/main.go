@@ -45,19 +45,19 @@ func main() {
 func getPolygons() Polygons {
 	return Polygons{
 		{
-			{X: 44, Y: 170},
+			{X: 53, Y: 180},
 			{X: 68, Y: 200},
-			{X: 44, Y: 200},
+			{X: 44, Y: 199},
 		},
 		{
 			{X: 65, Y: 160},
 			{X: 58, Y: 189},
-			{X: 30, Y: 189},
+			{X: 30, Y: 190}, // changing this to Y: 188 "solves" the problem
 		},
 		{
 			{X: 61, Y: 189},
-			{X: 50, Y: 195},
-			{X: 46, Y: 187},
+			{X: 52, Y: 195},
+			{X: 48, Y: 187},
 		},
 	}
 }

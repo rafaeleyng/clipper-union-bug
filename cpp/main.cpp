@@ -27,17 +27,17 @@ struct Polygon {
 };
 
 vector<Polygon> getPolygons() {
-  Polygon a{{{44, 170},
+  Polygon a{{{53, 180},
              {68, 200},
-             {44, 200}}};
+             {44, 199}}};
 
   Polygon b{{{65, 160},
              {58, 189},
-             {30, 189}}};
+             {30, 190}}};
 
   Polygon c{{{61, 189},
-             {50, 195},
-             {46, 187}}};
+             {52, 195},
+             {48, 187}}};
 
   vector<Polygon> polygons{a, b, c};
   return polygons;
