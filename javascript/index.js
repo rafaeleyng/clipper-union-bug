@@ -16,7 +16,7 @@ const run = () => {
     }
 
     if (combinedPaths.length > 1) {
-        throw new ERror('unexpected multiple paths in combined paths')
+        throw new Error('unexpected multiple paths in combined paths')
     }
 
     const combinedPolygons = pathsToPolygons(combinedPaths)
